@@ -30,6 +30,7 @@ if [ $? -eq 0 ]; then
   stow starship
   stow tmux
   stow ghostty
+  stow direnv
 else
   echo "Failed to clone the repository."
   exit 1
