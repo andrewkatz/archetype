@@ -6,3 +6,4 @@ echo "setting wallpaper to ${SCRIPT_DIR}/wallpaper.jpg"
 gsettings set org.gnome.desktop.background picture-uri-dark "file://${SCRIPT_DIR}/wallpaper.jpg"
 gsettings set org.gnome.desktop.background picture-options 'zoom'
 gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200

@@ -2,7 +2,7 @@
 
 ORIGINAL_DIR=$(pwd)
 REPO_URL="https://github.com/andrewkatz/linux-dotfiles"
-REPO_NAME="dotfiles"
+REPO_NAME="linux-dotfiles"
 
 is_stow_installed() {
   pacman -Qi "stow" &> /dev/null
@@ -33,3 +33,5 @@ else
   echo "Failed to clone the repository."
   exit 1
 fi
+
+cd "$ORIGINAL_DIR"
