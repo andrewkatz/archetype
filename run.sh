@@ -108,13 +108,13 @@ echo "Configuring Gnome..."
 echo "Installing flatpaks (like discord and spotify)"
 . install-flatpaks.sh
 
+# Configuring GRUB
+echo "Configuring GRUB..."
+. configure-grub.sh
+
 # Set up dotfiles
 echo "Setting up dotfiles..."
 . dotfiles-setup.sh
-
-# Install TPM
-echo "Installing TPM..."
-. install-tpm.sh
 
 echo "Creating dev directory..."
 mkdir -p ~/dev
