@@ -106,10 +106,13 @@ echo "Installing flatpaks (like discord and spotify)"
 
 # Set up dotfiles
 echo "Setting up dotfiles..."
-# . dotfiles-setup.sh
+. dotfiles-setup.sh
 
 # Install TPM
 echo "Installing TPM..."
 . install-tpm.sh
+
+echo "Creating dev directory..."
+mkdir -p ~/dev
 
 echo "Setup complete! You may want to reboot your system."
