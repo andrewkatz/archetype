@@ -3,6 +3,8 @@
 An Arch Linux system tool that automates the setup and configuration of an Arch Linux system. It installs and configures
 packages, desktop environments, and various utilities to create a fully functional development environment.
 
+It is designed to work for my personal needs and hardware.
+
 Inspired by [Typecraft's Crucible](https://github.com/typecraft-dev/crucible).
 
 ## Prequisites
