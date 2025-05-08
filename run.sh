@@ -92,6 +92,10 @@ for service in "${SERVICES[@]}"; do
   fi
 done
 
+# NVIDIA setup
+echo "Configuring system for NVIDIA graphics card..."
+. install-nvidia.sh
+
 # Install gnome specific things to make it like a tiling WM
 echo "Installing Gnome extensions..."
 . gnome/gnome-extensions.sh
