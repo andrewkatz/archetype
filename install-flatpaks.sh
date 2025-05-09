@@ -1,6 +1,7 @@
 FLATPAKS=(
   spotify
   brave
+  StreamController
 )
 
 for pak in "${FLATPAKS[@]}"; do
