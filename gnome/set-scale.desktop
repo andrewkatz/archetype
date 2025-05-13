@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Exec=/usr/bin/xrandr --output DP-0.8 --scale 1.5x1.5
+Hidden=false
+X-GNOME-Autostart-enabled=true
+Name=Set Scale
