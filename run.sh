@@ -35,7 +35,29 @@ echo "Starting full system setup..."
 
 # Update the system first
 echo "Updating system..."
-sudo apt update -y && sudo apt upgrade -y
+sudo pacman -Syu --noconfirm
+
+# Install yay AUR helper if not present
+if ! command -v yay &> /dev/null; then
+  echo "Installing yay AUR helper..."
+  sudo pacman -S --needed git base-devel --noconfirm
+  if [[ ! -d "yay" ]]; then
+    echo "Cloning yay repository..."
+  else
+    echo "yay directory already exists, removing it..."
+    rm -rf yay
+  fi
+
+  git clone https://aur.archlinux.org/yay.git
+
+  cd yay
+  echo "building yay.... yaaaaayyyyy"
+  makepkg -si --noconfirm
+  cd ..
+  rm -rf yay
+else
+  echo "yay is already installed"
+fi
 
 # Install packages by category
 echo "Installing system utilities..."
@@ -70,6 +92,10 @@ for service in "${SERVICES[@]}"; do
   fi
 done
 
+# NVIDIA setup
+echo "Configuring system for NVIDIA graphics card..."
+. install-nvidia.sh
+
 # Install gnome specific things to make it like a tiling WM
 echo "Installing Gnome extensions..."
 . gnome/gnome-extensions.sh
@@ -78,24 +104,9 @@ echo "Setting Gnome hotkeys..."
 echo "Configuring Gnome..."
 . gnome/gnome-settings.sh
 
-echo "Installing mise..."
-curl https://mise.run | sh
-
-echo "Installing spotify..."
-. install-spotify.sh
-
-echo "Installing brave..."
-curl -fsS https://dl.brave.com/install.sh | sh
-
-echo "Installing snaps..."
-for snap in "${SNAPS[@]}"; do
-  if ! snap list "$snap" &> /dev/null; then
-    echo "Installing $snap..."
-    sudo snap install "$snap"
-  else
-    echo "$snap is already installed"
-  fi
-done
+# Some programs just run better as flatpaks. Like discord/spotify
+echo "Installing flatpaks (like discord and spotify)"
+. install-flatpaks.sh
 
 # Configuring GRUB
 echo "Configuring GRUB..."

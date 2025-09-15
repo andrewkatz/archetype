@@ -5,7 +5,7 @@ REPO_URL="https://github.com/andrewkatz/linux-dotfiles"
 REPO_NAME="linux-dotfiles"
 
 is_stow_installed() {
-  dpkg -s stow &> /dev/null
+  pacman -Qi "stow" &> /dev/null
 }
 
 if ! is_stow_installed; then
